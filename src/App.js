@@ -1,34 +1,26 @@
 import './App.css';
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
-import VegetablesFruits from "./VegetablesFruits/VegetablesFruits";
-import NavBar from "./NavBar/NavBar";
-import Berries from "./Berries/Berries";
-import DairyProducts from "./DairyProducts/DairyProducts";
-import Meat from "./Meat/Meat";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import {Route, BrowserRouter, Routes} from "react-router-dom";
-import AboutUs from "./AboutUs/AboutUs";
-import Basket from "./Basket/Basket";
-import Contacts from "./Contacts/Contacts";
-
+import AboutUs from "./components/AboutUs/AboutUs";
+import Basket from "./components/Basket/Basket";
+import Contacts from "./components/Contacts/Contacts";
+import Catalog from './components/Catalog/Catalog'
+import Authorization from './components/Authorization/Authorization';
 
 const App = () => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <NavBar/>
                 <div className='content-wrapper'>
                     <Routes>
-                        <Route exact path="/catalog/vegetablesFruits" element={<VegetablesFruits/>}/>
-                        <Route exact path="/catalog/berries" element={<Berries/>}/>
-                        <Route exact path="/catalog/dairyProducts" element={<DairyProducts/>}/>
-                        <Route exact path="/catalog/meat" element={<Meat/>}/>
+                        <Route exact path="/catalog" element={<Catalog/>}/>
                         <Route exact path="/aboutUs" element={<AboutUs/>}/>
                         <Route exact path="/basket" element={<Basket/>}/>
                         <Route exact path="/contacts" element={<Contacts/>}/>
+                        <Route exact path="/authorization" element={<Authorization/>}/>
                     </Routes>
-
                 </div>
                 <Footer/>
             </div>
