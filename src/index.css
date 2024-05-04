@@ -1,13 +1,174 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    background: #fff;
+    color: #222;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
 }
+
+
+.app-wrapper {
+    display: grid;
+    grid-template-rows: 60px 1fr 30px;
+    grid-template-columns:2fr 10fr;
+    grid-template-areas:
+  "h h"
+  "n c"
+  "f f";
+    grid-gap: 10px;
+    width: 1280px;
+    margin: 50px auto;
+}
+
+.header-wrapper {
+    grid-area: h;
+    border: 2px solid green;
+    border-radius: 5px;
+}
+
+.footer-wrapper {
+    grid-area: f;
+}
+
+.navbar-wrapper {
+    grid-area: n;
+    border: 2px solid green;
+    border-radius: 5px;
+}
+
+.position{
+    margin-left: 15px;
+}
+
+.content-wrapper {
+    grid-area: c;
+}
+
+header .logo {
+    font-weight: 600;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+header .search-txt {
+    border: 1px solid green;
+    border-radius: 5px;
+    width: 750px;
+    height: 30px;
+    display: inline;
+    margin-top: 10px;
+    margin-left: 100px;
+    cursor: pointer;
+    transition: opacity 500ms ease;
+}
+
+header .search-btn {
+    border: 1px solid green;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+header .nav{
+    float: right;
+    list-style: none;
+    display: inline;
+    cursor: pointer;
+    transition: opacity 500ms ease;
+    opacity: 0.5;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.products-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-gap: 10px;
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.products-element{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end ;
+    padding: 25px 20px ;
+    background-color: #ffffff;
+    box-shadow:
+            0 16px 24px 2px rgba(33,37,41,.02),
+            0 6px 30px 5px rgba(33,37,41,.04),
+            0 8px 10px -5px rgba(33,37,41,.1);
+    border: 2px solid green;
+    border-radius: 5px;
+
+}
+
+.products-element__name{
+    margin-bottom: auto;
+    font-weight: bold;
+}
+
+.products-element__img{
+    width: 100%;
+    height: 270px;
+    margin-top: 15px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.products-element__price{
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.products-element__btn{
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: 2px solid green;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    background: none;
+}
+
+.products-element__btn_active{
+    border: 1px solid transparent;
+    background-image: linear-gradient(to right, #e2f87c, #d6f567, #c8f151, #b9ee38, #a8eb12);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
