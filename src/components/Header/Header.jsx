@@ -1,7 +1,17 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import './Header.css'
-import {AppBar, Box, Container, IconButton, Toolbar, Typography} from "@mui/material";
+import {
+    AppBar,
+    Box,
+    Container,
+    Dialog, DialogActions,
+    DialogContent, DialogContentText,
+    DialogTitle,
+    IconButton, TextField,
+    Toolbar,
+    Typography
+} from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu'
 import {makeStyles} from '@mui/styles';
 import Button from "@mui/material/Button";
@@ -16,7 +26,17 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Header = ()=>{
-const clasess = useStyles()
+    const clasess = useStyles()
+
+    const [open, setOpen] = React.useState(false)
+
+    const handleClickOpen = () =>{
+        setOpen(true)
+    }
+
+    const handleClose = () =>{
+        setOpen(false)
+    }
 
     return(
         <div>
@@ -28,7 +48,33 @@ const clasess = useStyles()
                         </IconButton>
                         <Typography variant='h6' className={clasess.title}>Eco Place</Typography>
                         <Box mr={3}>
-                            <Button color="inherit" variant="outlined">Вход</Button>
+                            <Button color="inherit" variant="outlined" onClick={handleClickOpen}>Вход</Button>
+                            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                                <DialogTitle id="form-dialog-title">Вход</DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText>log in to select products</DialogContentText>
+                                    <TextField
+                                        autoFocus
+                                        margin="dance"
+                                        id="name"
+                                        label="Email Adress"
+                                        type="email"
+                                        fullWidth
+                                    />
+                                    <TextField
+                                        autoFocus
+                                        margin="dance"
+                                        id="pass"
+                                        label="Password"
+                                        type="Password"
+                                        fullWidth
+                                    />
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={handleClose} color="primary">Закрыть</Button>
+                                    <Button onClick={handleClose} color="primary">Войти</Button>
+                                </DialogActions>
+                            </Dialog>
                         </Box>
                         <Button color="secondary" variant="contained">Регистрация</Button>
                     </Toolbar>
