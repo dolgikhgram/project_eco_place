@@ -1,0 +1,26 @@
+.header-wrapper {
+    display: flex;
+    flex-direction: column;
+    grid-area: h;
+    border: 2px solid green;
+    border-radius: 5px;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.nav{
+    float: right;
+    list-style: none;
+    display: inline;
+    cursor: pointer;
+    transition: opacity 500ms ease;
+    opacity: 0.5;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-top: 10px;
+
+}

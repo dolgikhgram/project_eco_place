@@ -1,4 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    background: #fff;
+    color: #222;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+}
+
+
+.app-wrapper {
+    display: grid;
+    grid-template-rows: 60px 1fr 30px;
+    grid-template-columns:2fr 10fr;
+    grid-template-areas:
+  "h h"
+  "n c"
+  "f f";
+    grid-gap: 10px;
+    width: 1280px;
+    margin: 50px auto;
+}
+
+.navbar-wrapper {
+    grid-area: n;
+    border: 2px solid green;
+    border-radius: 5px;
+}
+
+.position{
+    margin-left: 15px;
+}
+
+.content-wrapper {
+    grid-area: c;
+}
 
 
 

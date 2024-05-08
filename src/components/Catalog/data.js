@@ -1,28 +1,30 @@
 export const CATALOG = [
     {
-        id:'el1',
+        id:'1',
         name:'Редис молодой пучок, 300г',
-        img:'https://img.vkusvill.ru/pim/images/site_BigWebP/10ee4f0d-a99f-4fce-b451-53939a9d2df1.webp?1708381519.1079',
+        img:'https://i.ibb.co/7CwZX7f/radish.webp',
         price: 204+' 💲',
         category: 'vegetables'
     },
     {
-        id:'el2',
+        id:'2',
         name:'Огурцы Луховицкие,500г',
-        img:'img/Cucumbers.webp',
-        price: 217+' 💲'
+        img:'https://i.ibb.co/stZZy04/cucumbers.webp',
+        price: 217+' 💲',
+        category: 'vegetables'
     },
     {
-        id:'el3',
+        id:'3',
         name:'Кабачки, 580г ',
-        img:'img/Zucchini.webp',
-        price: 284+' 💲'
+        img:'https://i.ibb.co/tcDR3T4/zucchini.webp',
+        price: 284+' 💲',
+        category: 'vegetables'
     },
     {
-        id:'el4',
-        name:'Яблоки ',
-        img:'',
-        price: 284+' 💲',
+        id:'4',
+        name:'Яблоки медовый хруст, 500г.',
+        img:'https://i.ibb.co/YpSkrc7/apples.webp ',
+        price: 223+' 💲',
         category: 'fruits'
     }
 ]
