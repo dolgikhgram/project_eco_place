@@ -13,6 +13,8 @@ import {
     Typography
 } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu'
+import DeleteIcon from '@mui/icons-material/Delete'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {makeStyles} from '@mui/styles';
 import Button from "@mui/material/Button";
 
@@ -30,11 +32,19 @@ const Header = ()=>{
 
     const [open, setOpen] = React.useState(false)
 
-    const handleClickOpen = () =>{
+    const handleClickOpen1 = () =>{
         setOpen(true)
     }
 
-    const handleClose = () =>{
+    const handleClose1 = () =>{
+        setOpen(false)
+    }
+
+    const handleClickOpen2 = () =>{
+        setOpen(true)
+    }
+
+    const handleClose2 = () =>{
         setOpen(false)
     }
 
@@ -48,9 +58,9 @@ const Header = ()=>{
                         </IconButton>
                         <Typography variant='h6' className={clasess.title}>Eco Place</Typography>
                         <Box mr={3}>
-                            <Button color="inherit" variant="outlined" onClick={handleClickOpen}>Вход</Button>
-                            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                                <DialogTitle id="form-dialog-title">Вход</DialogTitle>
+                            <Button color="inherit" variant="outlined" onClick={handleClickOpen1}>Вход</Button>
+                            <Dialog open={open} onClose={handleClose1} aria-labelledby="form-dialog-title-log-in">
+                                <DialogTitle id="form-dialog-title-log-in">Вход</DialogTitle>
                                 <DialogContent>
                                     <DialogContentText>log in to select products</DialogContentText>
                                     <TextField
@@ -71,12 +81,41 @@ const Header = ()=>{
                                     />
                                 </DialogContent>
                                 <DialogActions>
-                                    <Button onClick={handleClose} color="primary">Закрыть</Button>
-                                    <Button onClick={handleClose} color="primary">Войти</Button>
+                                    <Button onClick={handleClose1} color="primary">Закрыть</Button>
+                                    <Button onClick={handleClose1} color="primary">Войти</Button>
                                 </DialogActions>
                             </Dialog>
                         </Box>
-                        <Button color="secondary" variant="contained">Регистрация</Button>
+                        <Box>
+                            <Button color="secondary" variant="contained" onClick={handleClickOpen2}>Регистрация</Button>
+                            <Dialog open={open} onClose={handleClose2} aria-describedby="form-dialog-title-registration">
+                                <DialogTitle id="form-dialog-title-registration">Регистрация</DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText>Registration</DialogContentText>
+                                    <TextField
+                                    autoFocus
+                                    msrgin="dense"
+                                    id="name"
+                                    label="Email Adress"
+                                    type="email"
+                                    fullWidth
+                                    />
+                                    <TextField
+                                        autoFocus
+                                        margin="dance"
+                                        id="pass"
+                                        label="Password"
+                                        type="Password"
+                                        fullWidth
+                                    />
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={handleClose2} color="primary">Закрыть</Button>
+                                    <Button onClick={handleClose2} color="primary">Вход</Button>
+                                </DialogActions>
+                            </Dialog>
+                        </Box>
+                        <Button color="inherit" variant="text" size="large" startIcon={<AddShoppingCartIcon/>}/>
                     </Toolbar>
                 </Container>
             </AppBar>
