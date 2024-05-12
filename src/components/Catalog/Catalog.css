@@ -1,33 +1,57 @@
-.products-container{
+.catalog-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-template-rows: 30px 1fr;
+    grid-template-columns:2fr 10fr;
+    grid-template-areas:
+    "select search"
+    "select products";
+    grid-gap: 10px;
+    width: 1280px;
+    margin: 50px auto;
+}
+
+.search-txt {
+    width: 100%;
+    border: 2px solid green;
+    border-radius: 5px;
+    cursor: pointer;
+    grid-area: search;
+}
+
+.formControl-wrapper {
+    grid-area: select;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 10px;
     width: 80%;
     max-width: 1200px;
-    margin: auto;
+    margin-left: 200px;
+    grid-area: products
 }
 
-.products-element{
+.products-element {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end ;
-    padding: 25px 20px ;
+    justify-content: flex-end;
+    padding: 25px 20px;
     background-color: #ffffff;
-    box-shadow:
-            0 16px 24px 2px rgba(33,37,41,.02),
-            0 6px 30px 5px rgba(33,37,41,.04),
-            0 8px 10px -5px rgba(33,37,41,.1);
+    box-shadow: 0 16px 24px 2px rgba(33, 37, 41, .02),
+    0 6px 30px 5px rgba(33, 37, 41, .04),
+    0 8px 10px -5px rgba(33, 37, 41, .1);
     border: 2px solid green;
     border-radius: 5px;
 
 }
 
-.products-element__name{
+.products-element__name {
     margin-bottom: auto;
     font-weight: bold;
 }
 
-.products-element__img{
+.products-element__img {
     width: 100%;
     height: 270px;
     margin-top: 15px;
@@ -35,51 +59,12 @@
     border-radius: 5px;
 }
 
-.products-element__price{
+.products-element__price {
     margin-top: 15px;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.products-element__btn{
-    margin-top: 15px;
-    padding: 10px 15px;
-    border: 2px solid green;
-    border-radius: 5px;
-    cursor: pointer;
-    outline: none;
-    background: none;
-}
 
-.products-element__btn_active{
-    border: 1px solid transparent;
-    background-image: linear-gradient(to right, #e2f87c, #d6f567, #c8f151, #b9ee38, #a8eb12);
-}
 
-.select-categories{
-    width: 100%;
-    appearance: none;
-    border: 2px solid green ;
-    background-color: #ffffff;
-    outline: none;
-    border-radius: 5px;
-    padding: 10px 35px 10px 15px;
-    cursor: pointer;
-}
 
-.category-name{
-    margin-top: 15px;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.category-wrapper{
-    margin-bottom: 10px;
-}
-
-.search-txt{
-    width: 100%;
-    border: 2px solid green;
-    border-radius: 5px;
-    cursor: pointer;
-}

@@ -1,5 +1,4 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
 import './Header.css'
 import {
     AppBar,
@@ -7,13 +6,10 @@ import {
     Container,
     Dialog, DialogActions,
     DialogContent, DialogContentText,
-    DialogTitle,
-    IconButton, TextField,
+    DialogTitle, TextField,
     Toolbar,
     Typography
 } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu'
-import DeleteIcon from '@mui/icons-material/Delete'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {makeStyles} from '@mui/styles';
 import Button from "@mui/material/Button";
@@ -27,39 +23,39 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const Header = ()=>{
+const Header = () => {
     const clasess = useStyles()
 
-    const [open, setOpen] = React.useState(false)
+    const [openInput, setOpenInput] = React.useState(false)
 
-    const handleClickOpen1 = () =>{
-        setOpen(true)
+    const handleClickOpenInput = () => {
+        setOpenInput(true)
     }
 
-    const handleClose1 = () =>{
-        setOpen(false)
+    const handleCloseInput = () => {
+        setOpenInput(false)
     }
 
-    const handleClickOpen2 = () =>{
-        setOpen(true)
+    const [openRegistration, setOpenRegistration] = React.useState(false)
+
+    const handleClickOpenRegistration = () => {
+        setOpenRegistration(true)
     }
 
-    const handleClose2 = () =>{
-        setOpen(false)
+    const handleCloseRegistration = () => {
+        setOpenRegistration(false)
     }
 
-    return(
+    return (
         <div>
-            <AppBar  position='fixed' color="success" >
+            <AppBar position='fixed' color="success">
                 <Container fixed>
                     <Toolbar>
-                        <IconButton edge = "start" color="inherit" aria-label="menu" >
-                            <MenuIcon/>
-                        </IconButton>
                         <Typography variant='h6' className={clasess.title}>Eco Place</Typography>
                         <Box mr={3}>
-                            <Button color="inherit" variant="outlined" onClick={handleClickOpen1}>Вход</Button>
-                            <Dialog open={open} onClose={handleClose1} aria-labelledby="form-dialog-title-log-in">
+                            <Button color="inherit" variant="outlined" onClick={handleClickOpenInput}>Вход</Button>
+                            <Dialog open={openInput} onClose={handleCloseInput}
+                                    aria-labelledby="form-dialog-title-log-in">
                                 <DialogTitle id="form-dialog-title-log-in">Вход</DialogTitle>
                                 <DialogContent>
                                     <DialogContentText>log in to select products</DialogContentText>
@@ -81,24 +77,26 @@ const Header = ()=>{
                                     />
                                 </DialogContent>
                                 <DialogActions>
-                                    <Button onClick={handleClose1} color="primary">Закрыть</Button>
-                                    <Button onClick={handleClose1} color="primary">Войти</Button>
+                                    <Button onClick={handleCloseInput} color="primary">Закрыть</Button>
+                                    <Button onClick={handleCloseInput} color="primary">Войти</Button>
                                 </DialogActions>
                             </Dialog>
                         </Box>
                         <Box>
-                            <Button color="secondary" variant="contained" onClick={handleClickOpen2}>Регистрация</Button>
-                            <Dialog open={open} onClose={handleClose2} aria-describedby="form-dialog-title-registration">
+                            <Button color="secondary" variant="contained"
+                                    onClick={handleClickOpenRegistration}>Регистрация</Button>
+                            <Dialog open={openRegistration} onClose={handleCloseRegistration}
+                                    aria-describedby="form-dialog-title-registration">
                                 <DialogTitle id="form-dialog-title-registration">Регистрация</DialogTitle>
                                 <DialogContent>
                                     <DialogContentText>Registration</DialogContentText>
                                     <TextField
-                                    autoFocus
-                                    msrgin="dense"
-                                    id="name"
-                                    label="Email Adress"
-                                    type="email"
-                                    fullWidth
+                                        autoFocus
+                                        msrgin="dense"
+                                        id="name"
+                                        label="Email Adress"
+                                        type="email"
+                                        fullWidth
                                     />
                                     <TextField
                                         autoFocus
@@ -110,8 +108,9 @@ const Header = ()=>{
                                     />
                                 </DialogContent>
                                 <DialogActions>
-                                    <Button onClick={handleClose2} color="primary">Закрыть</Button>
-                                    <Button onClick={handleClose2} color="primary">Вход</Button>
+                                    <Button onClick={handleCloseRegistration} color="primary">Закрыть</Button>
+                                    <Button onClick={handleCloseRegistration}
+                                            color="primary">Зарегистрироваться</Button>
                                 </DialogActions>
                             </Dialog>
                         </Box>

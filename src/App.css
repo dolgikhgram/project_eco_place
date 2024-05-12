@@ -16,21 +16,15 @@ body {
     grid-template-rows: 60px 1fr 30px;
     grid-template-columns:2fr 10fr;
     grid-template-areas:
-  "h h"
-  "n c"
-  "f f";
+    "h h"
+    "c c"
+    "f f";
     grid-gap: 10px;
     width: 1280px;
-    margin: 50px auto;
+    margin: 30px auto;
 }
 
-.navbar-wrapper {
-    grid-area: n;
-    border: 2px solid green;
-    border-radius: 5px;
-}
-
-.position{
+.position {
     margin-left: 15px;
 }
 
