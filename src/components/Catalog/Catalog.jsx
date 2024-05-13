@@ -3,7 +3,8 @@ import React, {useRef, useState} from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import {CATALOG} from "./data";
 import './Catalog.css'
-import {Container, FormControl, Grid, InputLabel, MenuItem, Select} from "@mui/material";
+import {Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";
+import AppleIcon from '@mui/icons-material/Apple';
 
 // const useStyles = makeStyles((theme) => ({
 //     cardGrid: {
@@ -28,22 +29,23 @@ const AllProducts = () => {
     return (
         <>
             <div className='catalog-wrapper'>
-                <input
+                <TextField
+                    label="Введите товар"
+                    variant="outlined"
                     ref={inputRef}
-                    type="search"
                     className='search-txt'
-                    placeholder="Введите товар"
-                    style={{width: '100%', height: 55, marginBottom: 40}}
-                    onChange={onSearchChange}
-                />
+                    color="success"
+                    focused
+                    onChange={onSearchChange}/>
                 <div className='select-wrapper'>
-                    <FormControl   sx={{ minWidth: 200 }} className='formControl-wrapper'>
+                    <FormControl   sx={{ minWidth: 200 }} className='formControl-wrapper'  >
                         <InputLabel id="demo-simple-select-label" color="success" >Выберите категорию товаров
                             :</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             color="success"
+                            focused
                             value={categoriesQuery}
                             label="Age"
                             onChange={(e) => {
@@ -51,11 +53,11 @@ const AllProducts = () => {
                                 setCategoriesQuery(newCategories)
                             }}
                         >
-                            <MenuItem value={"fruits"}>Фрукты</MenuItem>
-                            <MenuItem value={"vegetables"}>Овощи</MenuItem>
-                            <MenuItem value={"Dairy, egg products"}>Молочные, продукты яйцо</MenuItem>
-                            <MenuItem value={"Meat,poultry"}>Мясо,птица</MenuItem>
-                            <MenuItem value={"Berries, greens"}>Ягоды, зелень</MenuItem>
+                            <MenuItem value={"fruits"}>🍏 Фрукты</MenuItem>
+                            <MenuItem value={"vegetables"}>🍅 Овощи</MenuItem>
+                            <MenuItem value={"Dairy, egg products"}>🥛 Молочные, продукты яйцо</MenuItem>
+                            <MenuItem value={"Meat,poultry"} >🥩 Мясо,птица</MenuItem>
+                            <MenuItem value={"Berries, greens"}>🍒 Ягоды, зелень</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
