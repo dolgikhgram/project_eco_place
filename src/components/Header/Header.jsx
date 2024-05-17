@@ -13,6 +13,7 @@ import {
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {makeStyles} from '@mui/styles';
 import Button from "@mui/material/Button";
+import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,6 +46,7 @@ const Header = () => {
     const handleCloseRegistration = () => {
         setOpenRegistration(false)
     }
+
 
     return (
         <div>
@@ -114,7 +116,22 @@ const Header = () => {
                                 </DialogActions>
                             </Dialog>
                         </Box>
-                        <Button color="inherit" variant="text" size="large" startIcon={<AddShoppingCartIcon/>}/>
+                        <NavLink to ="/basket" className='item'>   <Button
+                            color="inherit"
+                            variant="text"
+                            size="large"
+                            startIcon={<AddShoppingCartIcon/>}>
+                            {setitemsInCart(addToBasket? itemsInCart+1: itemsInCart)}
+                        </Button>
+                        </NavLink>
+                        {/*<Button*/}
+                        {/*    color="inherit"*/}
+                        {/*    variant="text"*/}
+                        {/*    size="large"*/}
+                        {/*    startIcon={<AddShoppingCartIcon/>}*/}
+                        {/*    onClick={handleClickOpenBasket}*/}
+
+                        {/*/>*/}
                     </Toolbar>
                 </Container>
             </AppBar>

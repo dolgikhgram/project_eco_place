@@ -3,8 +3,7 @@ import React, {useRef, useState} from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import {CATALOG} from "./data";
 import './Catalog.css'
-import {Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";
-import AppleIcon from '@mui/icons-material/Apple';
+import {Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";;
 
 // const useStyles = makeStyles((theme) => ({
 //     cardGrid: {

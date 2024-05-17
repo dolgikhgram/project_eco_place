@@ -14,12 +14,13 @@ const App = () => {
             <div className='app-wrapper'>
                 <Header/>
                 <div className='content-wrapper'>
+                    {/*<Catalog/>*/}
                     <Routes>
-                        <Route exact path="/catalog" element={<Catalog/>}/>
-                        <Route exact path="/aboutUs" element={<AboutUs/>}/>
-                        <Route exact path="/basket" element={<Basket/>}/>
-                        <Route exact path="/contacts" element={<Contacts/>}/>
-                        <Route exact path="/authorization" element={<Authorization/>}/>
+                        <Route exact path="/catalog" element={<Catalog/>} />
+                        <Route exact path="/aboutUs" element={<AboutUs/>} />
+                        <Route exact path="/basket" element={<Basket/>} />
+                        <Route exact path="/contacts" element={<Contacts/>} />
+                        <Route exact path="/authorization" element={<Authorization/>} />
                     </Routes>
                 </div>
                 <Footer/>
