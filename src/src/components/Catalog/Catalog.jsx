@@ -1,16 +1,8 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, {useRef, useState} from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import {CATALOG} from "./data";
+import {CATALOG} from "../../data";
 import './Catalog.css'
 import {Container, FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";;
-
-// const useStyles = makeStyles((theme) => ({
-//     cardGrid: {
-//         flexGrow: 1
-//     },
-//
-// }))
 
 const AllProducts = () => {
     const inputRef = useRef(null)
@@ -66,12 +58,13 @@ const AllProducts = () => {
                     <Grid container spacing={1}>
                         <ul className='products-container'>
                             {productsList.map((el, idx) => (
-                                <Grid item key={el} xs={4} sm={6} md={12}>
+                                <Grid item key={idx+'grid'} xs={4} sm={6} md={12}>
                                     <ProductCard
                                         key={idx}
                                         name={el.name}
                                         price={el.price}
                                         imgLink={el.img}
+                                        id={idx}
                                     />
                                 </Grid>
 
