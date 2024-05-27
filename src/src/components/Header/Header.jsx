@@ -33,7 +33,6 @@ const Header = () => {
     const [login,setLogin]=useState('')
     const handleLoginChange = (e) =>{
         setLogin(e.target.value)
-        console.log(login)
     }
 
     const [password,setPassword]=useState('')
@@ -43,14 +42,19 @@ const Header = () => {
 
     const [openInput, setOpenInput] = React.useState(false)
 
-    const [isLoggedIn,setIsLoggedIn]= useState(localStorage.getItem('isLoggedIn') === 'true')
+    const [isLoggedIn,setIsLoggedIn]= useState(localStorage.getItem('isLoggedIn'))
 
     const handleClickOpenInput = () => {
         setOpenInput(true)
     }
 
-    const handleCloseInput = (e) => {
+    const handleCloseInput = () => {
+        setOpenInput(false)
+    }
+
+    const handleInput = (e) => {
         e.preventDefault()
+        localStorage.clear()
         localStorage.setItem('isLoggedIn',false)
         setOpenInput(false)
         setIsLoggedIn(!isLoggedIn)
@@ -65,6 +69,25 @@ const Header = () => {
     const handleCloseRegistration = () => {
         setOpenRegistration(false)
     }
+
+    const [openExit,setOpenExit] = useState(false)
+
+    const handleClickExitInput =()=>{
+        setOpenExit(true)
+    }
+
+    const handleExit = ()=>{
+        setIsLoggedIn(!isLoggedIn)
+        setOpenExit(false)
+    }
+
+    const handleCloseExit = (e) =>{
+        e.preventDefault()
+        localStorage.clear()
+        setIsLoggedIn(!isLoggedIn)
+        setOpenExit(false)
+    }
+
 
     const context = useAppContext()
 
@@ -115,7 +138,7 @@ const Header = () => {
                                         </DialogContent>
                                         <DialogActions>
                                             <Button onClick={handleCloseInput} color="primary">Закрыть</Button>
-                                            <Button onClick={handleCloseInput} color="primary">Войти</Button>
+                                            <Button onClick={handleInput} color="primary">Войти</Button>
                                         </DialogActions>
                                     </Dialog>
                                 </form>
@@ -124,12 +147,23 @@ const Header = () => {
                             {
                                 isLoggedIn ?
                                     <Grid item md={1}>
-                                        <Button onClick={handleClickOpenInput}
+                                        <Button onClick={handleClickExitInput}
                                                 color="inherit"
                                                 variant="text"
                                                 size="large"
                                                 startIcon={<LogoutIcon/>}>
                                         </Button>
+                                        <Dialog open={openExit}
+                                                onClose={handleExit}
+                                                aria-labelledby="form-dialog-title-exit">
+                                            <DialogTitle id="form-dialog-title-exit"> Выход </DialogTitle>
+                                            <DialogContent>
+                                                <DialogContentText>Вы уверены, что хотите выйти?</DialogContentText>
+                                            </DialogContent>
+                                            <DialogActions>
+                                                <Button onClick={handleCloseExit} color="primary">Выйти</Button>
+                                            </DialogActions>
+                                        </Dialog>
 
                                     </Grid>
                                     :
@@ -159,9 +193,14 @@ const Header = () => {
                                         />
                                     </DialogContent>
                                     <DialogActions>
-                                        <Button onClick={handleCloseRegistration} color="primary">Закрыть</Button>
                                         <Button onClick={handleCloseRegistration}
-                                                color="primary">Зарегистрироваться</Button>
+                                                color="primary">
+                                            Закрыть
+                                        </Button>
+                                        <Button onClick={handleCloseRegistration}
+                                                color="primary">
+                                            Зарегистрироваться
+                                        </Button>
                                     </DialogActions>
                                 </Dialog>
                             </Grid>}

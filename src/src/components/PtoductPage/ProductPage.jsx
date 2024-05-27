@@ -5,7 +5,7 @@ import {CATALOG} from "../../data";
 import useAppContext from "../../hooks/useAppContext";
 import React, {useEffect, useState} from "react";
 
-const ProductPage = ({id})=>{
+const ProductPage = ()=>{
     const [searchParams] = useSearchParams()
     const {cartList, setCartList} = useAppContext()
 

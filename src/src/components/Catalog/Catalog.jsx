@@ -44,6 +44,7 @@ const AllProducts = () => {
                                 setCategoriesQuery(newCategories)
                             }}
                         >
+                            <MenuItem>Все категории</MenuItem>
                             <MenuItem value={"fruits"}>🍏 Фрукты</MenuItem>
                             <MenuItem value={"vegetables"}>🍅 Овощи</MenuItem>
                             <MenuItem value={"Dairy, egg products"}>🥛 Молочные, продукты яйцо</MenuItem>
@@ -71,7 +72,7 @@ const AllProducts = () => {
                             ))}
                         </ul>
                     </Grid>
-                </Container>}
+                </Container>
             </div>
         </>
     )

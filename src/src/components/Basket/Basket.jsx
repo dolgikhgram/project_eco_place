@@ -28,7 +28,7 @@ const Basket = () => {
                         ))}
                     </ul>
                 </Grid>
-            </Container>}
+            </Container>
 
             {/*// <ul className='products-container'>*/}
             {/*// {cartList.map((id) => CATALOG[id].name)}*/}
