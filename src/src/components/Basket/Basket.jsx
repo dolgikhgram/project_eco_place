@@ -44,13 +44,13 @@ const Basket = () => {
 
     return (
         <div>
-            <Grid className='basket' container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
+            <Grid className='basket' container >
                 <Grid item md={12}>
                     <Container maxWidth="lg">
                         <Grid container spacing={1}>
                             <ul className='products-container'>
                                 {cartList.map((el) => (
-                                    <Grid item key={el + 'grid'} xs={4} sm={6} md={12}>
+                                    <Grid item key={el + 'grid'} xs={6} sm={6} md={12}>
                                         <BasketCard
                                             key={el}
                                             name={CATALOG[el].name}
@@ -65,8 +65,8 @@ const Basket = () => {
                         </Grid>
                     </Container>
                 </Grid>
-                <Grid item md={12}>
-                    <Box>
+                {(cartList.length !=0)?
+                <Grid item xs={2} sm={6} md={6.4} >
                         <Button className='bt-item'   color="success" variant="contained" onClick={handleClickBuy}>Купить</Button>
                         <Dialog open={openBuy} onClose={handleCloseBuy} aria-labelledby="form-dialog-title-buy">
                             <DialogTitle id="form-dialog-title-buy">Покупка</DialogTitle>
@@ -101,8 +101,10 @@ const Basket = () => {
                                 <Button fullWidth onClick={handleBuy} color="success" variant="contained">Купить</Button>
                             </DialogActions>
                         </Dialog>
-                    </Box>
-                </Grid>
+                </Grid> :
+                    <Grid item >
+                        <Box>Корзина пуста</Box>
+                    </Grid> }
             </Grid>
         </div>
     )

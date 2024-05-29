@@ -1,11 +1,11 @@
 .bt-item {
-    display: flex;
-    justify-content: space-between;
-
+    margin-right: 10px;
+    width: 915px;
 }
 
-.basketP{
+.basket {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
