@@ -10,9 +10,12 @@ import Authorization from './components/Authorization/Authorization';
 import ProductPage from "./components/PtoductPage/ProductPage";
 import {Context} from './consts'
 import {useEffect, useState} from "react";
+import CreateProduct from './components/CreateProduct/CreateProduct';
 
 
 const App = () => {
+
+    fetch('http://localhost:8080/api/buyer').then((res)=>console.log(res.json()))
 
     const [cartList, setCartList] = useState([])
 
@@ -44,6 +47,7 @@ const App = () => {
                         <Route exact path="/contacts" element={<Contacts/>} />
                         <Route exact path="/authorization" element={<Authorization/>} />
                         <Route path="/product" element = {<ProductPage/>}/>
+                        <Route path="/create-product" element = {<CreateProduct/>}/>
                     </Routes>
                 </div>
                 <Footer/>
