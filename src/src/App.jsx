@@ -14,6 +14,31 @@ import {useEffect, useState} from "react";
 
 const App = () => {
 
+    // const user = {
+    //     login: 'dolgish',
+    //     password: '0000',
+    //     name: 'nikita'
+    // }
+    //
+    // fetch('http://localhost:8080/api/buyer')
+    //     .then((response)=>{
+    //         console.log(response.json())
+    //     })
+
+
+    // fetch('http://localhost:8080/api/buyer', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json;charset=utf-8'
+    //     },
+    //     body: JSON.stringify(user)
+    // })
+    //
+    //
+    // let response = await fetch('http://localhost:8080/api/buyer', {
+    //     method: 'GET',
+    // })
+
     const [cartList, setCartList] = useState([])
 
     // const [posts, setPosts] =useState()

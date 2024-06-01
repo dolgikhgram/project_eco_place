@@ -27,8 +27,32 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
+const user = {
+    login: 'dolgish',
+    password: '0000',
+    name: 'nikita'
+}
+
 const Header = () => {
+
+    const [users , setUsers]= useState([])
+
+    fetch('http://localhost:8080/api/buyer')
+        .then((response)=>{
+                     return response.json()
+                    })
+        .then((json)=>{
+            console.log(json)
+        })
+
+
     const clasess = useStyles()
+
+    const [name,setName]=useState('')
+    const handleNameChange = (e) =>{
+        setName(e.target.value)
+        console.log(name)
+    }
 
     const [login,setLogin]=useState('')
     const handleLoginChange = (e) =>{
@@ -118,18 +142,30 @@ const Header = () => {
                                         <DialogContent>
                                             <DialogContentText>log in to select products</DialogContentText>
                                             <TextField
+                                                color="success"
                                                 autoFocus
                                                 margin="dance"
                                                 id="name"
+                                                label="Name"
+                                                type="Name"
+                                                onChange={handleNameChange}
+                                                fullWidth
+                                            />
+                                            <TextField
+                                                color="success"
+                                                autoFocus
+                                                margin="dance"
+                                                id="login"
                                                 label="Log in"
                                                 type="log in"
                                                 onChange={handleLoginChange}
                                                 fullWidth
                                             />
                                             <TextField
+                                                color="success"
                                                 autoFocus
                                                 margin="dance"
-                                                id="pass"
+                                                id="password"
                                                 label="Password"
                                                 type="Password"
                                                 onChange={handlePasswordChange}
@@ -176,17 +212,28 @@ const Header = () => {
                                     <DialogContent>
                                         <DialogContentText>Registration</DialogContentText>
                                         <TextField
+                                            color="success"
                                             autoFocus
                                             margin="dance"
                                             id="name"
-                                            label="Email Adress"
-                                            type="email"
+                                            label="Name"
+                                            type="Name"
                                             fullWidth
                                         />
                                         <TextField
+                                            color="success"
                                             autoFocus
                                             margin="dance"
-                                            id="pass"
+                                            id="login"
+                                            label="Log in"
+                                            type="log in"
+                                            fullWidth
+                                        />
+                                        <TextField
+                                            color="success"
+                                            autoFocus
+                                            margin="dance"
+                                            id="password"
                                             label="Password"
                                             type="Password"
                                             fullWidth
