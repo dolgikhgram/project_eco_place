@@ -1,11 +1,11 @@
 import './Header.css'
-import React from "react"
+import React, { useRef } from "react"
 import {
     AppBar,
     Container,
     Dialog, DialogActions,
     DialogContent, DialogContentText,
-    DialogTitle, Grid, TextField,
+    DialogTitle, FormControl, Grid, TextField,
     Toolbar,
     Typography
 } from "@mui/material";
@@ -17,6 +17,7 @@ import {NavLink} from "react-router-dom";
 
 import useAppContext from "../../hooks/useAppContext";
 import {useState} from "react";
+import { FoodBank } from '@mui/icons-material';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -116,7 +117,11 @@ const Header = () => {
     const context = useAppContext()
 
     const cartCount = context.cartList.length
+    
 
+    const registrationFormRef = useRef(null)
+
+    const authorizationFormRef = useRef(null)
 
     return (
         <div>
@@ -141,10 +146,37 @@ const Header = () => {
                                         <DialogTitle id="form-dialog-title-log-in">Вход</DialogTitle>
                                         <DialogContent>
                                             <DialogContentText>log in to select products</DialogContentText>
+                                            <form ref={authorizationFormRef} onSubmit={(e)=>{
+                                                e.preventDefault()
+                                                const formData = new FormData(authorizationFormRef.current); 
+                                                const login = formData.get('login')
+                                                const password = formData.get('password')
+
+                                                console.log(login, password)
+    
+                                                fetch('http://localhost:8080/api/buyer/authorize', {
+                                                    method: 'POST',
+                                                    body:JSON.stringify({
+                                                        login,
+                                                        password,
+                                                    }),
+                                                    headers: new Headers({'content-type': 'application/json'}),
+                                                }).then((res)=>{
+                                                    //status - 200 OK
+                                                    //status - 400 неправильные данные
+                                                    if(res.status===200){
+                                                        //вошел
+                                                    }
+                                                    else{
+                                                        //не вошел
+                                                    }
+                                                })
+                                            }}>
                                             <TextField
                                                 color="success"
                                                 autoFocus
                                                 margin="dance"
+                                                name='login'
                                                 id="name"
                                                 label="Name"
                                                 type="Name"
@@ -162,7 +194,11 @@ const Header = () => {
                                                 fullWidth
                                             />
                                             <TextField
+<<<<<<< HEAD
                                                 color="success"
+=======
+                                                name='password'
+>>>>>>> 70c181e4c88f69669f86d9d41bd393f6cb8d88ab
                                                 autoFocus
                                                 margin="dance"
                                                 id="password"
@@ -171,11 +207,11 @@ const Header = () => {
                                                 onChange={handlePasswordChange}
                                                 fullWidth
                                             />
+                                                <Button type="submit">
+                                                 Войти
+                                                </Button>
+                                            </form>
                                         </DialogContent>
-                                        <DialogActions>
-                                            <Button onClick={handleCloseInput} color="primary">Закрыть</Button>
-                                            <Button onClick={handleInput} color="primary">Войти</Button>
-                                        </DialogActions>
                                     </Dialog>
                                 </form>
                             </Grid>
@@ -211,6 +247,29 @@ const Header = () => {
                                     <DialogTitle id="form-dialog-title-registration">Регистрация</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText>Registration</DialogContentText>
+                                        <form ref ={registrationFormRef} 
+                                        onSubmit={(e)=>{
+                                            e.preventDefault()
+                                            const formData = new FormData(registrationFormRef.current); 
+                                            const login = formData.get('login')
+                                            const password = formData.get('password')
+                                            const name = formData.get('name')
+
+                                            const formBody =JSON.stringify({
+                                                login,
+                                                password,
+                                                name
+                                            })
+
+                                            console.log(formBody)
+
+                                            fetch('http://localhost:8080/api/buyer', {
+                                                method: 'POST',
+                                                body: formBody,
+                                                headers: new Headers({'content-type': 'application/json'})
+                                            }).then((res)=>console.log(res))
+                                        }
+                                        }>
                                         <TextField
                                             color="success"
                                             autoFocus
@@ -219,6 +278,7 @@ const Header = () => {
                                             label="Name"
                                             type="Name"
                                             fullWidth
+                                            name='login'
                                         />
                                         <TextField
                                             color="success"
@@ -237,18 +297,21 @@ const Header = () => {
                                             label="Password"
                                             type="Password"
                                             fullWidth
+                                            name='password'
                                         />
-                                    </DialogContent>
-                                    <DialogActions>
-                                        <Button onClick={handleCloseRegistration}
-                                                color="primary">
-                                            Закрыть
-                                        </Button>
-                                        <Button onClick={handleCloseRegistration}
-                                                color="primary">
+                                          <TextField
+                                            autoFocus
+                                            margin="dance"
+                                            id="name"
+                                            label="Name"
+                                            fullWidth
+                                            name='name'
+                                        />
+                                        <Button type="submit">
                                             Зарегистрироваться
                                         </Button>
-                                    </DialogActions>
+                                     </form>
+                                    </DialogContent>
                                 </Dialog>
                             </Grid>}
                             <Grid item>
@@ -263,6 +326,17 @@ const Header = () => {
                                 </NavLink>
                             </Grid>
                         </Grid>
+                        <Grid item>
+                                <NavLink to="/create-product" className='item'> 
+                                <Button
+                                    color="inherit"
+                                    variant="text"
+                                    size="large"
+                                    startIcon={<FoodBank/>}>
+                                    {/*{setitemsInCart(addToBasket? itemsInCart+1: itemsInCart)}*/}
+                            </Button>
+                                </NavLink>
+                            </Grid>
                     </Toolbar>
                 </Container>
             </AppBar>
