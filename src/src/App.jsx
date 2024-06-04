@@ -15,7 +15,6 @@ import CreateProduct from './components/CreateProduct/CreateProduct';
 
 const App = () => {
 
-<<<<<<< HEAD
     // const user = {
     //     login: 'dolgish',
     //     password: '0000',
@@ -40,9 +39,9 @@ const App = () => {
     // let response = await fetch('http://localhost:8080/api/buyer', {
     //     method: 'GET',
     // })
-=======
     fetch('http://localhost:8080/api/buyer').then((res)=>console.log(res.json()))
->>>>>>> 70c181e4c88f69669f86d9d41bd393f6cb8d88ab
+
+    fetch('http://localhost:8080/api/buyer').then((res)=>console.log(res.json()))
 
     const [cartList, setCartList] = useState([])
 
