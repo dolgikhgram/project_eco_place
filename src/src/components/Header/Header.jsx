@@ -202,7 +202,9 @@ const Header = () => {
                                                         onChange={handlePasswordChange}
                                                         fullWidth
                                                         />
-                                                        <Button type="submit">
+                                                        <Button type="submit"
+                                                                color="success"
+                                                        >
                                                             Войти
                                                         </Button>
                                                 </form>
@@ -295,7 +297,9 @@ const Header = () => {
                                 fullWidth
                                 name='password'
                                 />
-                                <Button type="submit">
+                                <Button type="submit"
+                                        color="success"
+                                >
                                 Зарегистрироваться
                                 </Button>
                                 </form>

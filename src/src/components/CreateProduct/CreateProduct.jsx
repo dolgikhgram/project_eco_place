@@ -1,27 +1,27 @@
-import { Button, MenuItem, Select, TextField } from "@mui/material"
-import { useEffect, useRef, useState } from "react"
+import {Button, Grid, MenuItem, Select, TextField} from "@mui/material"
+import {useEffect, useRef, useState} from "react"
 
-const CreateProduct = ()=>{
+const CreateProduct = () => {
 
     const [categories, setCategories] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch('http://localhost:8080/api/category', {
             method: 'GET',
         }).then(response => response.json())
-        .then(data=>{
-            console.log(data)
-            setCategories(data)
-        });
-    },[])
+            .then(data => {
+                console.log(data)
+                setCategories(data)
+            });
+    }, [])
 
 
     const formRef = useRef(null)
-    
 
-    const onFormSubmit = (e)=>{
+
+    const onFormSubmit = (e) => {
         e.preventDefault()
-        const formData = new FormData(formRef.current); 
+        const formData = new FormData(formRef.current);
         const name = formData.get('name')
         const category_id = formData.get('category_id')
         const price = formData.get('price')
@@ -31,7 +31,7 @@ const CreateProduct = ()=>{
 
         fetch('http://localhost:8080/api/product', {
             method: 'POST',
-            body:JSON.stringify({
+            body: JSON.stringify({
                 name,
                 category_id,
                 price,
@@ -39,13 +39,12 @@ const CreateProduct = ()=>{
                 seller_id
             }),
             headers: new Headers({'content-type': 'application/json'}),
-        }).then((res)=>{
+        }).then((res) => {
             //status - 200 OK
             //status - 400 неправильные данные
-            if(res.status===200){
+            if (res.status === 200) {
                 //вошел
-            }
-            else{
+            } else {
                 //не вошел
             }
         })
@@ -53,34 +52,45 @@ const CreateProduct = ()=>{
     }
 
     return (
-        <form ref={formRef} onSubmit={onFormSubmit} style={{display: 'flex', flexDirection: 'column', width: 400}}>
-                <TextField
-                 name="name"
-                 label="name"
-                 />
-                <Select
-                name="category_id"
-                label="category_id"
-                >
-                    {categories.map((item)=><MenuItem value={item.id}>{item.name}</MenuItem>)}
+        <div>
+                <form ref={formRef} onSubmit={onFormSubmit}
+                      style={{display: 'flex', flexDirection: 'column',  }}>
+                    <TextField
+                        color="success"
+                        name="name"
+                        label="name"
+                    />
+                    <Select
+                        color="success"
+                        name="category_id"
+                        label="category_id"
+                    >
+                        {categories.map((item) => <MenuItem value={item.id}>{item.name}</MenuItem>)}
                     </Select>
 
-                <TextField
-                 name="price"
-                 label="price"
-                 />
-                <TextField 
-                name="photo"
-                label="photo"
-                />
-                <TextField
-                 name="seller_id"
-                label="seller_id"
-                 />
-                <Button type="submit">
-                    Создать новый товар
+                    <TextField
+                        color="success"
+                        name="price"
+                        label="price"
+                    />
+                    <TextField
+                        color="success"
+                        name="photo"
+                        label="photo"
+                    />
+                    <TextField
+                        color="success"
+                        name="seller_id"
+                        label="seller_id"
+                    />
+                    <Button type="submit"
+                            fullWidth
+                            color="success"
+                            variant="contained">
+                        Создать новый товар
                     </Button>
-        </form>
+                </form>
+        </div>
     )
 }
 
