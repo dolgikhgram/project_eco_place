@@ -1,4 +1,4 @@
-import {Button, Grid, MenuItem, Select, TextField} from "@mui/material"
+import {Button, MenuItem, Select, TextField} from "@mui/material"
 import {useEffect, useRef, useState} from "react"
 
 const CreateProduct = () => {
@@ -54,7 +54,7 @@ const CreateProduct = () => {
     return (
         <div>
                 <form ref={formRef} onSubmit={onFormSubmit}
-                      style={{display: 'flex', flexDirection: 'column',  }}>
+                      style={{display: 'flex', flexDirection: 'column',   alignItems: 'center' }}>
                     <TextField
                         color="success"
                         name="name"
@@ -64,6 +64,7 @@ const CreateProduct = () => {
                         color="success"
                         name="category_id"
                         label="category_id"
+                        style={{width: 220}}
                     >
                         {categories.map((item) => <MenuItem value={item.id}>{item.name}</MenuItem>)}
                     </Select>
@@ -84,9 +85,10 @@ const CreateProduct = () => {
                         label="seller_id"
                     />
                     <Button type="submit"
-                            fullWidth
                             color="success"
-                            variant="contained">
+                            variant="contained"
+                            style={{ marginTop: 10}}
+                    >
                         Создать новый товар
                     </Button>
                 </form>

@@ -10,6 +10,7 @@ import {
     Typography
 } from "@mui/material";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LogoutIcon from '@mui/icons-material/Logout';
 import {makeStyles} from '@mui/styles';
 import Button from "@mui/material/Button";
@@ -201,138 +202,149 @@ const Header = () => {
                                                         type="Password"
                                                         onChange={handlePasswordChange}
                                                         fullWidth
-                                                        />
-                                                        <Button type="submit"
-                                                                color="success"
-                                                        >
-                                                            Войти
-                                                        </Button>
+                                                    />
+                                                    <Button type="submit"
+                                                            color="success"
+                                                    >
+                                                        Войти
+                                                    </Button>
                                                 </form>
                                             </DialogContent>
                                         </Dialog>
                                     </form>
                                 </Grid>
-                                }
+                            }
                             {
                                 isLoggedIn ?
-                                <Grid item md={1}>
-                                <Button onClick={handleClickExitInput}
-                                color="inherit"
-                                variant="text"
-                                size="large"
-                                startIcon={<LogoutIcon/>}>
-                                </Button>
-                                <Dialog open={openExit}
-                                onClose={handleExit}
-                                aria-labelledby="form-dialog-title-exit">
-                                <DialogTitle id="form-dialog-title-exit"> Выход </DialogTitle>
-                                <DialogContent>
-                                <DialogContentText>Вы уверены, что хотите выйти?</DialogContentText>
-                                </DialogContent>
-                                <DialogActions>
-                                <Button onClick={handleCloseExit} color="primary">Выйти</Button>
-                                </DialogActions>
-                                </Dialog>
+                                    <Grid item md={1}>
+                                        <Button onClick={handleClickExitInput}
+                                                color="inherit"
+                                                variant="text"
+                                                size="large"
+                                                startIcon={<LogoutIcon/>}>
+                                        </Button>
+                                        <Dialog open={openExit}
+                                                onClose={handleExit}
+                                                aria-labelledby="form-dialog-title-exit">
+                                            <DialogTitle id="form-dialog-title-exit"> Выход </DialogTitle>
+                                            <DialogContent>
+                                                <DialogContentText>Вы уверены, что хотите выйти?</DialogContentText>
+                                            </DialogContent>
+                                            <DialogActions>
+                                                <Button onClick={handleCloseExit} color="primary">Выйти</Button>
+                                            </DialogActions>
+                                        </Dialog>
 
-                                </Grid>
-                                :
-                                <Grid item md={2}>
-                                <Button color="secondary" variant="contained"
-                                onClick={handleClickOpenRegistration}>Регистрация</Button>
-                                <Dialog open={openRegistration} onClose={handleCloseRegistration}
-                                aria-describedby="form-dialog-title-registration">
-                                <DialogTitle id="form-dialog-title-registration">Регистрация</DialogTitle>
-                                <DialogContent>
-                                <DialogContentText>Registration</DialogContentText>
-                                <form ref ={registrationFormRef}
-                                onSubmit={(e)=>{
-                                e.preventDefault()
-                                const formData = new FormData(registrationFormRef.current);
-                                const login = formData.get('login')
-                                const password = formData.get('password')
-                                const name = formData.get('name')
+                                    </Grid>
+                                    :
+                                    <Grid item md={2}>
+                                        <Button color="secondary" variant="contained"
+                                                onClick={handleClickOpenRegistration}>Регистрация</Button>
+                                        <Dialog open={openRegistration} onClose={handleCloseRegistration}
+                                                aria-describedby="form-dialog-title-registration">
+                                            <DialogTitle id="form-dialog-title-registration">Регистрация</DialogTitle>
+                                            <DialogContent>
+                                                <DialogContentText>Registration</DialogContentText>
+                                                <form ref={registrationFormRef}
+                                                      onSubmit={(e) => {
+                                                          e.preventDefault()
+                                                          const formData = new FormData(registrationFormRef.current);
+                                                          const login = formData.get('login')
+                                                          const password = formData.get('password')
+                                                          const name = formData.get('name')
 
-                                const formBody =JSON.stringify({
-                                login,
-                                password,
-                                name
-                            })
+                                                          const formBody = JSON.stringify({
+                                                              login,
+                                                              password,
+                                                              name
+                                                          })
 
-                                console.log(formBody)
+                                                          console.log(formBody)
 
-                                fetch('http://localhost:8080/api/buyer', {
-                                method: 'POST',
-                                body: formBody,
-                                headers: new Headers({'content-type': 'application/json'})
-                            }).then((res)=>console.log(res))
-                            }
-                            }>
-                                <TextField
-                                color="success"
-                                autoFocus
-                                margin="dance"
-                                id="name"
-                                label="Name"
-                                type="Name"
-                                fullWidth
-                                name='login'
-                                />
-                                <TextField
-                                color="success"
-                                autoFocus
-                                margin="dance"
-                                id="login"
-                                label="Log in"
-                                type="log in"
-                                fullWidth
-                                name='login'
-                                />
-                                <TextField
-                                color="success"
-                                autoFocus
-                                margin="dance"
-                                id="password"
-                                label="Password"
-                                type="Password"
-                                fullWidth
-                                name='password'
-                                />
-                                <Button type="submit"
-                                        color="success"
-                                >
-                                Зарегистрироваться
-                                </Button>
-                                </form>
-                                </DialogContent>
-                                </Dialog>
-                                </Grid>}
-                                <Grid item>
+                                                          fetch('http://localhost:8080/api/buyer', {
+                                                              method: 'POST',
+                                                              body: formBody,
+                                                              headers: new Headers({'content-type': 'application/json'})
+                                                          }).then((res) => console.log(res))
+                                                      }
+                                                      }>
+                                                    <TextField
+                                                        color="success"
+                                                        autoFocus
+                                                        margin="dance"
+                                                        id="name"
+                                                        label="Name"
+                                                        type="Name"
+                                                        fullWidth
+                                                        name='login'
+                                                    />
+                                                    <TextField
+                                                        color="success"
+                                                        autoFocus
+                                                        margin="dance"
+                                                        id="login"
+                                                        label="Log in"
+                                                        type="log in"
+                                                        fullWidth
+                                                        name='login'
+                                                    />
+                                                    <TextField
+                                                        color="success"
+                                                        autoFocus
+                                                        margin="dance"
+                                                        id="password"
+                                                        label="Password"
+                                                        type="Password"
+                                                        fullWidth
+                                                        name='password'
+                                                    />
+                                                    <Button type="submit"
+                                                            color="success"
+                                                    >
+                                                        Зарегистрироваться
+                                                    </Button>
+                                                </form>
+                                            </DialogContent>
+                                        </Dialog>
+                                    </Grid>}
+                            <Grid item>
                                 <NavLink to="/basket" className='item'> <Button
-                                color="inherit"
-                                variant="text"
-                                size="large"
-                                startIcon={<AddShoppingCartIcon/>}>
-                            {/*{setitemsInCart(addToBasket? itemsInCart+1: itemsInCart)}*/}
+                                    color="inherit"
+                                    variant="text"
+                                    size="large"
+                                    startIcon={<AddShoppingCartIcon/>}>
+                                    {/*{setitemsInCart(addToBasket? itemsInCart+1: itemsInCart)}*/}
                                 </Button>
-                            {cartCount}
+                                    {cartCount}
                                 </NavLink>
-                                </Grid>
-                                </Grid>
-                                <Grid item>
-                                <NavLink to="/create-product" className='item'>
+                            </Grid>
+                        </Grid>
+                        <Grid item>
+                            <NavLink to="/create-product" className='item'>
                                 <Button
-                                color="inherit"
-                                variant="text"
-                                size="large"
-                                startIcon={<FoodBank/>}>
-                            {/*{setitemsInCart(addToBasket? itemsInCart+1: itemsInCart)}*/}
+                                    color="inherit"
+                                    variant="text"
+                                    size="large"
+                                    startIcon={<FoodBank/>}>
+                                    {/*{setitemsInCart(addToBasket? itemsInCart+1: itemsInCart)}*/}
                                 </Button>
-                                </NavLink>
-                                </Grid>
-                                </Toolbar>
-                                </Container>
-                                </AppBar>
-                                </div>
-                                )
-                            }
-                            export default Header
+                            </NavLink>
+                        </Grid>
+                        <Grid item>
+                            <NavLink to="/history-of-orders" className='item'>
+                                <Button
+                                    color="inherit"
+                                    variant="text"
+                                    size="large"
+                                    startIcon={<AccessTimeIcon/>}>
+                                    {/*{setitemsInCart(addToBasket? itemsInCart+1: itemsInCart)}*/}
+                                </Button>
+                            </NavLink>
+                        </Grid>
+                    </Toolbar>
+                </Container>
+            </AppBar>
+        </div>
+    )
+}
+export default Header

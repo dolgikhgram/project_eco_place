@@ -1,4 +1,5 @@
 import './App.css';
+import HistoryOfOrders from "./components/HistoryOfOrders/HistoryOfOrders";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import {Route, BrowserRouter, Routes} from "react-router-dom";
@@ -74,6 +75,7 @@ const App = () => {
                         <Route exact path="/authorization" element={<Authorization/>} />
                         <Route path="/product" element = {<ProductPage/>}/>
                         <Route path="/create-product" element = {<CreateProduct/>}/>
+                        <Route path="/history-of-orders" element = {<HistoryOfOrders/>}/>
                     </Routes>
                 </div>
                 <Footer/>
